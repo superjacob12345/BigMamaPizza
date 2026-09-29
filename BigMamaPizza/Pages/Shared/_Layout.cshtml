@@ -1,45 +1,67 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="da">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BigMamaPizza</title>
     <script type="importmap"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BigMamaPizza.styles.css" asp-append-version="true" />
+    <style>
+        :root { --rod: #c0392b; --rod-mork: #962d22; --creme: #fdf6ec; --mork: #2b1d16; --gul: #f4b942; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--creme); color: var(--mork); min-height: 100vh; display: flex; flex-direction: column; margin-bottom: 0 !important; }
+        .site-main { flex: 1; }
+        .site-nav { background-color: var(--mork); padding: 0.8rem 0; border-bottom: 4px solid var(--rod); }
+        .site-nav .logo { font-family: 'Pacifico', cursive; font-size: 1.7rem; color: #fff !important; }
+        .site-nav .nav-link { color: rgba(255, 255, 255, 0.8); font-weight: 500; }
+        .site-nav .nav-link:hover, .site-nav .nav-link:focus { color: var(--gul); }
+        .site-nav .btn-book { background-color: var(--rod); color: #fff; font-weight: 600; border-radius: 50px; padding: 0.5rem 1.4rem; }
+        .site-nav .btn-book:hover { background-color: var(--rod-mork); color: #fff; }
+        .site-main h1, .site-main h2, .site-main h3 { font-weight: 600; color: var(--rod-mork); }
+        .site-main .btn-primary { background-color: var(--rod); border-color: var(--rod); border-radius: 50px; padding: 0.5rem 1.5rem; }
+        .site-main .btn-primary:hover { background-color: var(--rod-mork); border-color: var(--rod-mork); }
+        .site-footer { background-color: var(--mork); color: rgba(255, 255, 255, 0.7); padding: 1.5rem 0; margin-top: 2rem; }
+        .site-footer .logo-small { font-family: 'Pacifico', cursive; color: #fff; font-size: 1.2rem; }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-md navbar-dark site-nav">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">BigMamaPizza</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand logo" asp-page="/Index">🍕 BigMamaPizza</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hovedmenu"
+                        aria-controls="hovedmenu" aria-expanded="false" aria-label="Vis menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                <div class="collapse navbar-collapse" id="hovedmenu">
+                    <ul class="navbar-nav ms-auto align-items-md-center gap-md-2">
+                        <li class="nav-item"><a class="nav-link" asp-page="/Index">Forside</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-page="/Bookings/Details">Min booking</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-page="/Bookings/Index">Medarbejder</a></li>
+                        <li class="nav-item ms-md-2">
+                            <a class="btn btn-book" asp-page="/Bookings/Create">Book bord</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - BigMamaPizza - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <main role="main" class="site-main">
+        <div class="container py-4">
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+            <span class="logo-small">BigMamaPizza</span>
+            <span>Åbent alle dage 10–22</span>
+            <span>&copy; @DateTime.Now.Year BigMamaPizza</span>
         </div>
     </footer>
 
