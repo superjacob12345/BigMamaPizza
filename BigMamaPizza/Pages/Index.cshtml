@@ -1,10 +1,93 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "BigMammaPizza";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero">
+    <div class="hero-content">
+        <p class="small-title">VELKOMMEN TIL</p>
+
+        <h1>BigMammaPizza</h1>
+
+        <p class="hero-text">
+            Frisklavet pizza, hyggelig stemning og nem bordbooking.
+            Book dit bord online og vær sikker på, at der er plads til dig og dit selskab.
+        </p>
+
+        <div class="hero-buttons">
+            <a asp-page="/Bookings/Create" class="main-btn">
+                Book bord
+            </a>
+
+            <a asp-page="/Bookings/Available" class="second-btn">
+                Se ledige borde
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="info-section">
+
+    <div class="info-card">
+        <div class="icon">🍕</div>
+
+        <h2>God pizza</h2>
+
+        <p>
+            Vi laver vores pizzaer med gode råvarer og serverer dem direkte fra ovnen.
+        </p>
+    </div>
+
+
+    <div class="info-card">
+        <div class="icon">📅</div>
+
+        <h2>Book bord online</h2>
+
+        <p>
+            Vælg dato, tidspunkt og antal personer. Systemet finder automatisk et ledigt bord.
+        </p>
+
+        <a asp-page="/Bookings/Create" class="card-link">
+            Book nu →
+        </a>
+    </div>
+
+
+    <div class="info-card">
+        <div class="icon">🪑</div>
+
+        <h2>Se ledige borde</h2>
+
+        <p>
+            Se hvilke borde der er ledige på den dato og det tidspunkt, du ønsker.
+        </p>
+
+        <a asp-page="/Bookings/Available" class="card-link">
+            Se borde →
+        </a>
+    </div>
+
+</section>
+
+
+<section class="booking-section">
+
+    <div>
+        <p class="small-title">NEM BOOKING</p>
+
+        <h2>Klar til en aften hos BigMammaPizza?</h2>
+
+        <p>
+            Opret din booking på få minutter.
+            Du får automatisk tildelt et bord, der passer til antallet af personer.
+        </p>
+    </div>
+
+    <a asp-page="/Bookings/Create" class="main-btn">
+        Book et bord
+    </a>
+
+</section>
