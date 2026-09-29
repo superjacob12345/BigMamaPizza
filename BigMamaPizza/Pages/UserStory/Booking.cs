@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 
 namespace BigMamaPizza.Pages.UserStory
 {
@@ -6,6 +7,7 @@ namespace BigMamaPizza.Pages.UserStory
     public class Booking
     {
         // instans variabler
+        private List<Booking> _bookings;
         private int _bookingId;
         private string _customerName;
         // constructor
@@ -13,6 +15,7 @@ namespace BigMamaPizza.Pages.UserStory
         {
             _bookingId = bookingId;
             _customerName = customerName;
+            _bookings = new List<Booking>();
         }
         // properties
         public int BookingId
@@ -25,25 +28,54 @@ namespace BigMamaPizza.Pages.UserStory
             get { return _customerName; }
             set { _customerName = value; }
         }
+        public List<Booking> Bookings
+        {
+            get { return _bookings; }
+            set { _bookings = value; }
+        }
+
 
         // CRUD methods
         public void CreateBooking(int bookingId, string customerName)
         {
-            // code to create a booking
-            
-
+            var booking = new Booking(bookingId, customerName);
+            _bookings.Add(booking);
         }
         public void ReadBooking(int bookingId)
         {
-            // code to read a booking
+            var booking = _bookings.FirstOrDefault(b => b.BookingId == bookingId);
+            if (booking != null)
+            {
+                Console.WriteLine(booking);
+            }
+            else
+            {
+                Console.WriteLine("Booking not found.");
+            }
         }
         public void UpdateBooking(int bookingId, string customerName)
         {
-            // code to update a booking
+            var booking = _bookings.FirstOrDefault(b => b.BookingId == bookingId);
+            if (booking != null)
+            {
+                booking.CustomerName = customerName;
+            }
+            else
+            {
+                Console.WriteLine("Booking not found.");
+            }
         }
         public void DeleteBooking(int bookingId)
         {
-            // code to delete a booking
+            var booking = _bookings.FirstOrDefault(b => b.BookingId == bookingId);
+            if (booking != null)
+            {
+                _bookings.Remove(booking);
+            }
+            else
+            {
+                Console.WriteLine("Booking not found.");
+            }
         }
 
 
